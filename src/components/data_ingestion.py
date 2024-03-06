@@ -13,7 +13,7 @@ from dataclasses import dataclass  # dtaclass, we create directly create variabl
 @dataclass
 class DataIngetionconfig:
         # Get the directory path of the current script
-    current_directory = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+    current_directory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 
     # Define the logs directory path relative to the main directory
     logs_directory = os.path.join(current_directory, "artifacts")
