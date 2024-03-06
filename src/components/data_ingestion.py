@@ -12,9 +12,16 @@ from dataclasses import dataclass  # dtaclass, we create directly create variabl
 
 @dataclass
 class DataIngetionconfig:
-    train_data_path:str = os.path.join("artifacts", "train.csv")
-    test_data_path:str = os.path.join("artifacts", "test.csv")
-    raw_data_path:str = os.path.join("artifacts", "raw.csv")
+        # Get the directory path of the current script
+    current_directory = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+
+    # Define the logs directory path relative to the main directory
+    logs_directory = os.path.join(current_directory, "artifacts")
+
+
+    train_data_path:str = os.path.join(logs_directory, "train.csv")
+    test_data_path:str = os.path.join(logs_directory, "test.csv")
+    raw_data_path:str = os.path.join(logs_directory, "raw.csv")
 
 # Create a class for Data Ingetion
 class DataIngetion:

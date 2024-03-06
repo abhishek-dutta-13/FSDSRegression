@@ -15,7 +15,15 @@ from src.utils import save_objects
 
 @dataclass
 class DataTransformationConfig:
-    preprocessor_obj_file_path:str = os.path.join("../src","artifacts", "preprocessor.pkl")
+    #preprocessor_obj_file_path:str = os.path.join("artifacts", "preprocessor.pkl")
+
+    # Get the directory path of the current script
+    current_directory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
+
+    # Define the logs directory path relative to the main directory
+    logs_directory = os.path.join(current_directory, "artifacts")
+
+    preprocessor_obj_file_path = os.path.join(logs_directory, "preprocessor.pkl")
 
 
 class DataTransformation:

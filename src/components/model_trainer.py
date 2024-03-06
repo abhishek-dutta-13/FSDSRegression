@@ -16,7 +16,14 @@ import os
 
 @dataclass
 class ModelTrainerConfig:
-    trained_model_path_file = os.path.join("../src","artifacts", "model.pkl")
+
+    # Get the directory path of the current script
+    current_directory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
+
+    # Define the logs directory path relative to the main directory
+    logs_directory = os.path.join(current_directory, "artifacts")
+
+    trained_model_path_file = os.path.join(logs_directory, "model.pkl")
 
 class ModelTrainer:
     def __init__(self):
