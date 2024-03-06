@@ -5,7 +5,6 @@ from src.exception import CustomException
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass  # dtaclass, we create directly create variable names, we dont need to write __init__ method
-from src.components.data_transformation import DataTransformation
 
 
 ## Initialize the Data Ingetion Configuration
@@ -59,10 +58,3 @@ class DataIngetion:
         except Exception as e:
             logger.info("Exception occured in Data Ingetion methods")
             raise CustomException(e, sys)
-
-if __name__ == "__main__":
-    obj=DataIngetion()
-    train_data_path, test_data_path = obj.initiate_data_ingetion()
-    data_transformation = DataTransformation()
-    train_arr, test_arr = data_transformation.initiate_data_transformation(train_data_path, test_data_path)
-

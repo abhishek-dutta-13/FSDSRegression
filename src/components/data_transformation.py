@@ -15,7 +15,7 @@ from src.utils import save_objects
 
 @dataclass
 class DataTransformationConfig:
-    preprocessor_obj_file_path:str = os.path.join("artifacts", "preprocessor.pkl")
+    preprocessor_obj_file_path:str = os.path.join("../src","artifacts", "preprocessor.pkl")
 
 
 class DataTransformation:
@@ -125,7 +125,6 @@ class DataTransformation:
                 self.data_transformation_config.preprocessor_obj_file_path
             )
 
-            logger.info("Data Transformation methods ends")
         
         except Exception as e:
             logger.info("Error occured in initiate_data_transformation method")
