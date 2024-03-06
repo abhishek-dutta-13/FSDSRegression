@@ -34,7 +34,13 @@ class DataIngetion:
             #read data
             #df = pd.read_csv("/Users/abhishek/Desktop/iNeuron/Machine Learning/Linear Regression/Linear_Regression_End_to_End/notebooks/gemstone.csv")
             
-            df = pd.read_csv(os.path.join("/Users/abhishek/Desktop/iNeuron/Machine Learning/Linear Regression/Linear_Regression_End_to_End/notebooks", "gemstone.csv")) #reading the data from the data directory
+            #df = pd.read_csv(os.path.join("/Users/abhishek/Desktop/iNeuron/Machine Learning/Linear Regression/Linear_Regression_End_to_End/notebooks", "gemstone.csv")) #reading the data from the data directory
+
+            current_directory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
+            logger.info("Current directory is {}".format(current_directory))
+
+            df = pd.read_csv(os.path.join(current_directory, "notebooks", "gemstone.csv")) #reading the data from the data directory
+            logger.info(f"Fetched data from {os.path.join(current_directory, 'notebooks', 'gemstone.csv')}")
             logger.info("Dataset read successfully")
 
             #make my directory
@@ -65,3 +71,8 @@ class DataIngetion:
         except Exception as e:
             logger.info("Exception occured in Data Ingetion methods")
             raise CustomException(e, sys)
+        
+
+if __name__ == "__main__":
+    data_ingetion = DataIngetion()
+    data_ingetion.initiate_data_ingetion()

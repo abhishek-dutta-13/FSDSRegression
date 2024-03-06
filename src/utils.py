@@ -21,6 +21,16 @@ def save_objects(file_path, obj):
         logger.error("Error while saving the pickle file: %s" % file_path)
         raise CustomException(e, sys)
     
+def load_object(file_path):
+    try:
+        with open(file_path, "rb") as file_obj:
+            obj = pickle.load(file_obj)
+        logger.info("pickle file loaded from: %s" % file_path)
+        return obj
+    except Exception as e:
+        logger.error("Error while loading the pickle file: %s" % file_path)
+        raise CustomException(e, sys)
+    
 def evaluate_model(X_train, y_train, X_test, y_test, models):
     report = {}
     try:
